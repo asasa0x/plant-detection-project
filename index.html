@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Disease Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+ <nav class="navbar">
+        <div class="nav-brand">
+        <i class="fas fa-leaf"></i>
+        <span>PlantGuard AI</span>
+    </div>
+        <div class="burger" onclick="toggleMenu()">
+            <div></div><div></div><div></div>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="detect-image.html">Workspace</a>
+            <a href="logout.html">Log Out</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>AI-Based Plant Monitoring &<br>Disease Detection System</h1>
+            <p>Upload a leaf image to detect diseases early and get treatment recommendations powered by Machine Learning.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="upload-section">
+            <div class="upload-card" id="dropZone">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h2>Upload Plant Leaf Image</h2>
+                <p>Drag & drop your image here or click to browse</p>
+                <p class="file-hint">Supports JPG, PNG, JPEG (Max 16MB)</p>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <button class="btn-primary" id="browseBtn">
+                    <i class="fas fa-folder-open"></i> Choose Image
+                </button>
+            </div>
+
+            <div class="preview-card hidden" id="previewCard">
+                <div class="preview-image-container">
+                    <img id="previewImage" src="" alt="Preview">
+                </div>
+                <div class="preview-actions">
+                    <button class="btn-secondary" id="changeBtn">
+                        <i class="fas fa-sync-alt"></i> Change Image
+                    </button>
+                    <button class="btn-primary" id="analyzeBtn">
+                        <i class="fas fa-search"></i> Analyze Plant
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="loading-section hidden" id="loadingSection">
+            <div class="loader">
+                <div class="leaf-spinner">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <p>Analyzing leaf image with AI model...</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="result-section hidden" id="resultSection">
+            <div class="result-header">
+                <h2><i class="fas fa-clipboard-check"></i> Analysis Results</h2>
+            </div>
+
+            <div class="result-grid">
+                <div class="result-card status-card" id="statusCard">
+                    <div class="result-icon" id="statusIcon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Status</h3>
+                    <p class="result-value" id="statusValue">-</p>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-icon crop-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Crop</h3>
+                    <p class="result-value" id="cropValue">-</p>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-icon disease-icon">
+                        <i class="fas fa-virus"></i>
+                    </div>
+                    <h3>Disease</h3>
+                    <p class="result-value" id="diseaseValue">-</p>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-icon confidence-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Confidence</h3>
+                    <p class="result-value" id="confidenceValue">-</p>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidenceFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="treatment-card" id="treatmentCard">
+                <h3><i class="fas fa-medkit"></i> Treatment Recommendation</h3>
+                <p id="treatmentValue">-</p>
+            </div>
+
+            <div class="top-predictions-card hidden" id="topPredictionsCard">
+                <h3><i class="fas fa-list-ol"></i> Top Predictions</h3>
+                <div id="topPredictionsList"></div>
+            </div>
+
+            <button class="btn-primary btn-new" id="newAnalysisBtn">
+                <i class="fas fa-plus"></i> New Analysis
+            </button>
+        </section>
+
+        <section class="info-section">
+            <h2>How It Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-camera"></i>
+                    <h3>Upload Image</h3>
+                    <p>Take a photo of a plant leaf and upload it to the system.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-cogs"></i>
+                    <h3>AI Processing</h3>
+                    <p>Image is preprocessed using OpenCV and analyzed by our ML model.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Get Results</h3>
+                    <p>Receive disease diagnosis, confidence score, and treatment advice.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="tech-section">
+            <h2>Technologies Used</h2>
+            <div class="tech-grid">
+                <div class="tech-badge"><i class="fab fa-python"></i> Python</div>
+                <div class="tech-badge"><i class="fas fa-server"></i> Flask</div>
+                <div class="tech-badge"><i class="fas fa-brain"></i> PyTorch</div>
+                <div class="tech-badge"><i class="fas fa-image"></i> OpenCV</div>
+                <div class="tech-badge"><i class="fas fa-database"></i> PlantVillage</div>
+                <div class="tech-badge"><i class="fas fa-code"></i> HTML/CSS/JS</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>@2026 All Rights Reserved. ❤️ — AI-Based Plant Monitoring and Disease Detection System</p>
+        <p class="footer-sub">Powered by PlantVillage Dataset & MobileNetV2 Deep Learning Model</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

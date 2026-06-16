@@ -1,0 +1,167 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AI Plant Disease Detection</title>
+    <link rel="stylesheet" href="assets/style.css">
+
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <style>
+        .contact-section {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Premium Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="logo-container">
+            <img src="image/logo.png" alt="AI Plant Logo"
+                onerror="this.src='https://img.icons8.com/nolan/96/artificial-intelligence.png'">
+
+            <div class="logo-text">AI Plant Disease Detection</div>
+        </div>
+
+        <div class="burger" onclick="toggleMenu()">
+            <div></div><div></div><div></div>
+        </div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="detect-image.html">Workspace</a>
+            <a href="logout.html">Log Out</a>
+        </div>
+
+    </nav>
+
+    <!-- Main Contact Section -->
+    <section class="contact-section">
+
+        <div class="contact-card glass-card reveal-on-scroll">
+
+            <h2 style="font-size: 32px;
+                background: linear-gradient(135deg, #ffffff, #22c55e);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 8px;">
+
+                Contact Our AI Team
+            </h2>
+
+            <p style="color: #94a3b8; font-size: 14.5px;">
+                Have technical inquiries, integration questions, or AI model feedback? Reach out to us.
+            </p>
+
+            <form id="contactForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="userName">Name</label>
+                        <input type="text" id="userName" required placeholder="Enter your Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userEmail">Email Address</label>
+                        <input type="email" id="userEmail" required placeholder="Enter your Email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userMsg">Message</label>
+                        <textarea id="userMsg" rows="5" required placeholder="Write your inquiry here..."></textarea>
+                    </div>
+
+                </div>
+
+                <button type="submit" id="submitBtn"
+                    class="btn-primary"
+                    style="margin-top: 25px; width: 100%; justify-content: center;">
+
+                    <i data-lucide="send"></i> Send Message
+                </button>
+
+            </form>
+
+            <!-- Success Feedback -->
+            <div class="form-success-msg" id="formSuccessMsg" style="display:none;">
+                <i data-lucide="check-circle"></i>
+                <span>Message Sent Successfully! Our AI team will respond soon.</span>
+            </div>
+
+            <!-- Error Feedback -->
+            <div id="formErrorMsg"
+                style="display:none; color:#f87171; margin-top:15px; text-align:center;">
+                <span>Something went wrong. Please try again.</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Premium Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 <strong>AI Plant Disease Detection</strong>. All Rights Reserved. ❤️</p>
+            <p>Empowering agriculture with artificial intelligence.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+
+        emailjs.init("1cL-Pd8kZSWtUjofk");
+
+        document.getElementById("contactForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById("userName").value;
+            const email = document.getElementById("userEmail").value;
+            const message = document.getElementById("userMsg").value;
+            const btn = document.getElementById("submitBtn");
+
+            btn.disabled = true;
+            btn.innerHTML = "Sending...";
+
+            try {
+                await emailjs.send("service_ai_plant", "template_plant", {
+                    from_name: name,
+                    from_email: email,
+                    message: message
+                });
+
+                document.getElementById("contactForm").style.display = "none";
+                document.getElementById("formSuccessMsg").style.display = "flex";
+                document.getElementById("formErrorMsg").style.display = "none";
+
+                lucide.createIcons();
+
+            } catch (error) {
+                console.error(error);
+
+                document.getElementById("formErrorMsg").style.display = "block";
+                btn.disabled = false;
+                btn.innerHTML = '<i data-lucide="send"></i> Send Message';
+
+                lucide.createIcons();
+            }
+        });
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+</html> -->

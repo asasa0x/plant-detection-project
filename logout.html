@@ -1,0 +1,135 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logging Out...</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+
+<!-- <style>
+
+/* =======================
+   GLOBAL
+======================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+}
+
+/* =======================
+   BOX
+======================= */
+
+.logout-box{
+    text-align:center;
+    background:rgba(255,255,255,0.05);
+    padding:50px;
+    border-radius:20px;
+
+    backdrop-filter:blur(15px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* ICON */
+
+.logout-box i{
+    font-size:60px;
+    color:#ef4444;
+    margin-bottom:20px;
+}
+
+/* TEXT */
+
+.logout-box h1{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.logout-box p{
+    color:#cbd5e1;
+    margin-bottom:20px;
+}
+
+/* COUNTDOWN */
+
+.count{
+    font-size:22px;
+    font-weight:700;
+    color:#22c55e;
+}
+
+/* SPINNER */
+
+.spinner{
+    margin-top:20px;
+    font-size:22px;
+    animation:spin 1s linear infinite;
+    color:#22c55e;
+}
+
+@keyframes spin{
+    from{transform:rotate(0);}
+    to{transform:rotate(360deg);}
+}
+
+</style> -->
+
+</head>
+
+<body>
+
+<div class="logout-box">
+
+    <i class="fas fa-sign-out-alt"></i>
+
+    <h1>Logging you out</h1>
+
+    <p>You will be redirected shortly...</p>
+
+    <div class="count" id="count">5</div>
+
+    <div class="spinner">
+        <i class="fas fa-spinner"></i>
+    </div>
+
+</div>
+
+<script>
+
+let time = 5;
+const countEl = document.getElementById("count");
+
+const timer = setInterval(() => {
+
+    time--;
+    countEl.innerText = time;
+
+    if(time === 0){
+        clearInterval(timer);
+
+        // redirect after logout
+        window.location.href = "/login"; 
+        // ya "/" use kar lo agar home jana ho
+    }
+
+}, 1000);
+
+</script>
+
+</body>
+</html> -->
